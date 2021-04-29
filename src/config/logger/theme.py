@@ -1,5 +1,5 @@
 class Style:
-    normal = 0
+    default = 0
     bold = 1
     light = 2
     italicized = 3
@@ -8,6 +8,7 @@ class Style:
 
 
 class TextColor:
+    default = '00'
     black = 30
     red = 31
     green = 32
@@ -19,6 +20,7 @@ class TextColor:
 
 
 class BackgroundColor:
+    default = '00'
     black = 40
     red = 41
     green = 42
