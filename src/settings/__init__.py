@@ -1,2 +1,2 @@
 from . import logger
-from . import path
+from . import basic_path

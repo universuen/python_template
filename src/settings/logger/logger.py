@@ -9,7 +9,7 @@ level = logging.DEBUG
 
 theme = {
     'DEBUG': [Style.bold, TextColor.black, BackgroundColor.cyan],
-    'INFO': [Style.bold, TextColor.black, BackgroundColor.green],
-    'WARNING': [Style.bold, TextColor.black, BackgroundColor.yellow],
+    'INFO': [Style.bold, TextColor.black, BackgroundColor.yellow],
+    'WARNING': [Style.bold, TextColor.black, BackgroundColor.purple],
     'ERROR': [Style.bold, TextColor.black, BackgroundColor.red],
 }
