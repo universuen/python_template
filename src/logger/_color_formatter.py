@@ -1,6 +1,10 @@
 import logging
 
-from src import config
+"""
+For the purpose of reusing, relevant import is used here.
+In actual project, absolute import is better.
+"""
+from .. import settings
 
 
 class ColorFormatter(logging.Formatter):
@@ -9,8 +13,8 @@ class ColorFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         message = super().format(record)
-        if record.levelname not in config.logger.theme.keys():
+        if record.levelname not in settings.logger.theme.keys():
             return message
         else:
-            style_and_color = config.logger.theme[record.levelname]
+            style_and_color = settings.logger.theme[record.levelname]
             return f"\033[{style_and_color[0]};{style_and_color[1]};{style_and_color[2]}m{message}\033[0;0m"

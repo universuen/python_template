@@ -1,15 +1,19 @@
 import logging
 
-from src import config
-from src.logger._color_formatter import ColorFormatter
+"""
+For the purpose of reusing, relevant import is used here.
+In actual project, absolute import is better.
+"""
+from .. import settings
+from ._color_formatter import ColorFormatter
 
 
 class Logger(logging.Logger):
-    def __init__(self, name: str, file=config.logger.file, level=config.logger.level) -> None:
+    def __init__(self, name: str, file=settings.logger.file, level=settings.logger.level) -> None:
         super().__init__(name, level=level)
 
         # set formatter
-        formatter = ColorFormatter(config.logger.format_)
+        formatter = ColorFormatter(settings.logger.format_)
 
         # set handler
         if file:
@@ -17,5 +21,5 @@ class Logger(logging.Logger):
         else:
             handler = logging.StreamHandler()
         handler.setFormatter(formatter)
-        handler.setLevel(config.logger.level)
+        handler.setLevel(settings.logger.level)
         self.addHandler(handler)

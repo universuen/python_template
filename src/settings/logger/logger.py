@@ -1,6 +1,6 @@
 import logging
 
-from src.config.logger.theme import Style, TextColor, BackgroundColor
+from ._theme import Style, TextColor, BackgroundColor
 
 
 file = None
