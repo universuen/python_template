@@ -1,4 +1,4 @@
-from src.config.logger import Logger
+from src.logger import Logger
 
 
 Logger('wow').debug('Y so serious')
