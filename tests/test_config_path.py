@@ -1,6 +1,6 @@
-from src import settings
+from src import config
 
 
-print(settings.path.src)
-print(settings.path.project)
-print(settings.path.data)
+print(config.path.src)
+print(config.path.project)
+print(config.path.data)
