@@ -1,5 +1,12 @@
+# IDE configurations
 .vscode/
 .idea/
+
+# cache
 __pycache__/
+
+# virtual environment
 venv/
+
+# space-intensive data
 data/
