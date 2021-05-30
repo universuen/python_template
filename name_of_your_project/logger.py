@@ -4,7 +4,7 @@ Using loggers in your project helps you develop more efficiently.
 
 import logging
 
-from src import config
+from . import config
 
 
 class Logger(logging.Logger):
