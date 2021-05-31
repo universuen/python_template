@@ -1,5 +1,22 @@
 import context
-from name_of_your_project.logger import Logger
+from app.logger import Logger
 
-if __name__ == '__main__':
-    Logger('test').debug('hello')
+
+def test_debug():
+    Logger('test').debug('Hello')
+
+
+def test_info():
+    Logger('test').info('Hello')
+
+
+def test_warning():
+    Logger('test').warning('Hello')
+
+
+def test_error():
+    Logger('test').error('Hello')
+
+
+def test_fatal():
+    Logger('test').fatal('Hello')
