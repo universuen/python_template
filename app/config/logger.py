@@ -1,4 +1,5 @@
 import logging
 
-format_ = '%(name)-10s: %(levelname)-10s: %(message)-100s'
+fmt = '%(asctime)s [%(name)s] %(levelname)s: %(message)s'
 level = logging.DEBUG
+datefmt = '%Y-%m-%d %H:%M:%S'
