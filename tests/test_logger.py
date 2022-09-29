@@ -1,6 +1,6 @@
 import context
 
-from src.logger import Logger
+from src._logger import Logger
 
 if __name__ == '__main__':
     logger = Logger('test')
