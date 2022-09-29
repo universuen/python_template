@@ -4,10 +4,12 @@
 
 # cache
 __pycache__/
-.pytest_cache/
 
 # virtual environment
 venv/
 
 # space-intensive data
 data/
+
+# logs
+logs/
