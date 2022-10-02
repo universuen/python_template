@@ -13,3 +13,5 @@ data/
 
 # logs
 logs/
+
+tests/playground.py
