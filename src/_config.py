@@ -4,9 +4,8 @@ class Config:
         result = dict()
         for k, v in vars(cls).items():
             if k.startswith('_'):
-                pass
-            else:
-                result[k] = v
+                continue
+            result[k] = v
         return result
 
     @classmethod

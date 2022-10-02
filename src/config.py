@@ -4,8 +4,6 @@ import logging
 
 from src._config import Config
 
-config_name: str | None = None
-
 
 class Paths(Config):
     src: Path = Path(__file__).absolute().parent
@@ -13,7 +11,7 @@ class Paths(Config):
     data: Path = project / 'data'
     scripts: Path = project / 'scripts'
     tests: Path = project / 'tests'
-    logs: Path = project / 'logs'
+    logs: Path = data / 'logs'
 
 
 # create path if not exists

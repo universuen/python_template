@@ -11,7 +11,5 @@ venv/
 # space-intensive data
 data/
 
-# logs
-logs/
-
-tests/playground.py
+# general test file
+playground.py

@@ -17,26 +17,25 @@ class Logger(logging.Logger):
             self,
             name: str,
             level: int | str = config.Logger.level,
-            log_dir: Path = None,
+            logs_dir: Path = config.Logger.logs_path,
     ) -> None:
         super().__init__(name, level=level)
+        # set format
         formatter = logging.Formatter(
             fmt=config.Logger.message_fmt,
             datefmt=config.Logger.date_fmt,
         )
-
+        # set console output
         s_handler = logging.StreamHandler(stream=sys.stdout)
         s_handler.setFormatter(formatter)
         s_handler.setLevel(config.Logger.level)
-
-        log_dir = config.Logger.logs_path / config.config_name if log_dir is None else log_dir
-        log_dir.mkdir(exist_ok=True)
-        log_file = log_dir / f'{name}.log'
+        self.addHandler(s_handler)
+        # set file output
+        logs_dir.mkdir(exist_ok=True)
+        log_file = logs_dir / f'{name}.log'
         if os.path.exists(log_file):
             warn(f'{log_file} already exists!')
         f_handler = logging.FileHandler(log_file)
         f_handler.setFormatter(formatter)
         f_handler.setLevel(config.Logger.level)
-
-        self.addHandler(s_handler)
         self.addHandler(f_handler)
