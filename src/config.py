@@ -12,12 +12,11 @@ class Paths(Config):
     scripts: Path = project / 'scripts'
     tests: Path = project / 'tests'
     logs: Path = data / 'logs'
-
-
-# create path if not exists
-for i in list(vars(Paths).values()):
-    if isinstance(i, Path):
-        i.mkdir(parents=True, exist_ok=True)
+    
+    # create path if not exists
+    for i in list(vars().values()):
+        if isinstance(i, Path):
+            i.mkdir(parents=True, exist_ok=True)
 
 
 class Logger(Config):

@@ -3,7 +3,7 @@ class Config:
     def to_dict(cls) -> dict:
         result = dict()
         for k, v in vars(cls).items():
-            if k.startswith('_'):
+            if k.startswith('_') or k in ('i', 'j', 'k'):
                 continue
             result[k] = v
         return result
