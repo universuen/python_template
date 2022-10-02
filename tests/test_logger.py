@@ -1,6 +1,6 @@
 import context
 
-from src._logger import config, Logger
+from src.logger import config, Logger
 
 if __name__ == '__main__':
     config.config_name = 'test_logger'
