@@ -2,8 +2,12 @@ from __future__ import annotations
 from pathlib import Path
 import logging
 
+from src._config import Config
 
-class Paths:
+config_name: str | None = None
+
+
+class Paths(Config):
     src: Path = Path(__file__).absolute().parent
     project: Path = src.parent
     data: Path = project / 'data'
@@ -18,8 +22,8 @@ for i in list(vars(Paths).values()):
         i.mkdir(parents=True, exist_ok=True)
 
 
-class Logger:
+class Logger(Config):
     message_fmt: str = '%(asctime)s [%(name)s] %(levelname)s: %(message)s'
     level: int = logging.DEBUG
     date_fmt: str = '%Y-%m-%d %H:%M:%S'
-    log_path: Path | str = Paths.logs
+    log_path: Path = Paths.logs
