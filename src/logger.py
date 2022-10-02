@@ -29,7 +29,7 @@ class Logger(logging.Logger):
         s_handler.setFormatter(formatter)
         s_handler.setLevel(config.Logger.level)
 
-        log_dir = config.Logger.log_path / config.config_name if log_dir is None else log_dir
+        log_dir = config.Logger.logs_path / config.config_name if log_dir is None else log_dir
         log_dir.mkdir(exist_ok=True)
         log_file = log_dir / f'{name}.log'
         if os.path.exists(log_file):

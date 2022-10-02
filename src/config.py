@@ -26,4 +26,4 @@ class Logger(Config):
     message_fmt: str = '%(asctime)s [%(name)s] %(levelname)s: %(message)s'
     level: int = logging.DEBUG
     date_fmt: str = '%Y-%m-%d %H:%M:%S'
-    log_path: Path = Paths.logs
+    logs_path: Path = Paths.logs
