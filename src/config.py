@@ -5,7 +5,7 @@ from pathlib import Path
 
 """
 Attention: To guarantee the code's low-coupling and reusability, 
-please do not import this module in other `src` modules except `utils`.
+please do not import this module in any `src` modules except `api`.
 """
 
 
