@@ -1,26 +1,44 @@
 from __future__ import annotations
-from pathlib import Path
+
 import logging
+from pathlib import Path
 
-from src._config import Config
+"""
+Attention: To guarantee the code's low-coupling and reusability, 
+please do not import this module in other `src` modules except `utils`.
+"""
 
 
-class Paths(Config):
+class _Config:
+    @classmethod
+    def to_dict(cls) -> dict:
+        result = dict()
+        for k, v in vars(cls).items():
+            if k.startswith('_') or k in ('i', 'j', 'k'):
+                continue
+            result[k] = v
+        return result
+
+    @classmethod
+    def print_content(cls):
+        print(cls.__name__)
+        for k, v in cls.to_dict().items():
+            print(f'\t{k}: {v}')
+
+
+class Paths(_Config):
     src: Path = Path(__file__).absolute().parent
     project: Path = src.parent
     data: Path = project / 'data'
     scripts: Path = project / 'scripts'
     tests: Path = project / 'tests'
     logs: Path = data / 'logs'
-    
+
     # create path if not exists
     for i in list(vars().values()):
         if isinstance(i, Path):
             i.mkdir(parents=True, exist_ok=True)
 
 
-class Logger(Config):
-    message_fmt: str = '%(asctime)s [%(name)s] %(levelname)s: %(message)s'
-    level: int = logging.DEBUG
-    date_fmt: str = '%Y-%m-%d %H:%M:%S'
-    logs_path: Path = Paths.logs
+class Logger(_Config):
+    level = logging.INFO

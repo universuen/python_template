@@ -1,7 +1,9 @@
 import context
 
-from src.logger import Logger
+import src
+
 
 if __name__ == '__main__':
-    logger = Logger('test')
-    logger.info('You should see me in both console and log file.')
+    logger = src.utils.get_configured_logger('test')
+    logger.debug('test_debug')
+    logger.info('test_info')
