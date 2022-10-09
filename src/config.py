@@ -10,23 +10,25 @@ please do not import this module in any `src` modules except `api`.
 
 
 class _Config:
-    @classmethod
-    def to_dict(cls) -> dict:
+    def to_dict(self) -> dict:
         result = dict()
-        for k, v in vars(cls).items():
-            if k.startswith('_') or k in ('i', 'j', 'k'):
+        for k, v in vars(self.__class__).items():
+            if k.startswith('_'):
                 continue
+            if type(v) is property:
+                v = getattr(self, k)
             result[k] = v
         return result
 
-    @classmethod
-    def print_content(cls):
-        print(cls.__name__)
-        for k, v in cls.to_dict().items():
-            print(f'\t{k}: {v}')
+    def __repr__(self):
+        result = f'<{self.__class__.__name__[1:]}Config> (\n'
+        for k, v in self.to_dict().items():
+            result += f'\t{k}: {v}\n'
+        result += ')'
+        return result
 
 
-class Paths(_Config):
+class _Path(_Config):
     src: Path = Path(__file__).absolute().parent
     project: Path = src.parent
     data: Path = project / 'data'
@@ -35,10 +37,20 @@ class Paths(_Config):
     logs: Path = data / 'logs'
 
     # create path if not exists
-    for i in list(vars().values()):
-        if isinstance(i, Path):
+    def __init__(self):
+        for i in list(self.to_dict().values()):
             i.mkdir(parents=True, exist_ok=True)
 
 
-class Logger(_Config):
-    level = logging.INFO
+path = _Path()
+
+
+class _Logger(_Config):
+    level: int | str = logging.INFO
+
+    @property
+    def logs_dir(self) -> Path:
+        return path.logs
+
+
+logger = _Logger()
