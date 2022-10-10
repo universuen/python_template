@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from typing import Type
 import logging
 from pathlib import Path
 
@@ -19,11 +20,8 @@ class _Config:
             result[k] = v
         return result
 
-    @classmethod
-    def print_content(cls):
-        print(cls.__name__)
-        for k, v in cls.to_dict().items():
-            print(f'\t{k}: {v}')
+
+ConfigType = Type[_Config]
 
 
 class Paths(_Config):
@@ -42,3 +40,17 @@ class Paths(_Config):
 
 class Logger(_Config):
     level = logging.INFO
+
+
+_all_items = vars().values()
+
+
+def get_all_configs() -> list[ConfigType]:
+    results = []
+    for i in _all_items:
+        try:
+            if issubclass(i, _Config) and not i.__name__.startswith('_'):
+                results.append(i)
+        except TypeError:
+            pass
+    return results
