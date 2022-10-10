@@ -1,6 +1,5 @@
 from src import config
 
 if __name__ == '__main__':
-    print(config.path)
-    print(config.logger)
-
+    config.Paths.print_content()
+    config.Logger.print_content()
