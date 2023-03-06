@@ -9,6 +9,25 @@ Attention: To guarantee the code's low-coupling and reusability,
 please do not import this module in any `src` modules except `api`.
 """
 
+# registry = dict()
+
+# def _get_pure_vars(obj):
+#     result = dict()
+#     for k, v in vars(obj).items():
+#         if k[0] == '_':
+#             continue
+#         if k in registry.keys():
+#             result[k] = registry[k]
+#             del registry[k]
+#         else:
+#             result[k] = v
+#     return result
+
+# def _registered_config(ConfigClass):
+#     registry[ConfigClass.__name__] = _get_pure_vars(ConfigClass)
+#     return ConfigClass
+
+
 
 class _Config:
     @classmethod
