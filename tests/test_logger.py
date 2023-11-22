@@ -1,14 +1,8 @@
 import context
 
-import src
-import configs
+from utils import get_logger
 
 
 if __name__ == '__main__':
-    logger = src.Logger(
-        'test', 
-        level=configs.LoggerConfig().level, 
-        logs_dir=configs.LoggerConfig().path
-    )
-    logger.debug('test_debug')
-    logger.info('test_info')
+    logger = get_logger('test')
+    logger.info('Hello, World!')
