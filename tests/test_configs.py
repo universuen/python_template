@@ -14,7 +14,6 @@ if __name__ == '__main__':
     class MyLoggerConfig(configs.LoggerConfig):
         level: int | str = 'DEBUG'
         new_attr: int = 1
-
     
     print_configs()
 
@@ -23,3 +22,8 @@ if __name__ == '__main__':
     print_configs()
 
     print(configs.LoggerConfig().to_dict())
+
+    from configs import LoggerConfig
+    LoggerConfig.level = 'WARNING'
+
+    print_configs()

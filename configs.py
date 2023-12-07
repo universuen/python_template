@@ -3,7 +3,7 @@ from pathlib import Path
 import logging
 
 
-class ConfigBase:
+class Config:
     def __init__(self) -> None:
         for k, v in vars(self.__class__).items():
             if not k.startswith('__'):
@@ -21,7 +21,7 @@ class ConfigBase:
         return vars(self)
 
 
-class PathConfig(ConfigBase):
+class PathConfig(Config):
     project: Path = Path(__file__).absolute().parent
     src: Path = project / 'src'
     data: Path = project / 'data'
@@ -35,7 +35,7 @@ class PathConfig(ConfigBase):
             path.mkdir(parents=True, exist_ok=True)
 
 
-class LoggerConfig(ConfigBase):
+class LoggerConfig(Config):
     level: int | str = logging.INFO
     path: Path = PathConfig().logs
 
