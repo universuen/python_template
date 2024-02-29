@@ -1,7 +1,3 @@
-"""
-This file is used to add current project path into the python path.
-"""
-
 import sys
 from pathlib import Path
 
