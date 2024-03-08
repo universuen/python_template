@@ -6,11 +6,7 @@ class Env:
             cls._instance = super(Env, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
-    def __init__(self):
-        self.config = {}
-
-    def set(self, key, value):
-        self.config[key] = value
-
-    def get(self, key):
-        return self.config.get(key)
+    def __repr__(self):
+        attrs = vars(self)
+        attrs_str = ', '.join(f"{k}={v}" for k, v in attrs.items())
+        return f"Env({attrs_str})"

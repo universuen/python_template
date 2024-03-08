@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 import sys
 from pathlib import Path
@@ -31,3 +29,8 @@ class Logger(logging.Logger):
             f_handler.setFormatter(formatter)
             f_handler.setLevel(level)
             self.addHandler(f_handler)
+
+    def set_level(self, level: int | str) -> None:
+        self.setLevel(level)
+        for handler in self.handlers:
+            handler.setLevel(level)
