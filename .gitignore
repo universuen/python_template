@@ -12,4 +12,4 @@ __pycache__/
 /data/
 
 # general test file
-tests/playground.py
+/tests/playground.py
