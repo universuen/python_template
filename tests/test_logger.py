@@ -1,6 +1,5 @@
 import path_setup
 
-
 from src.logger import Logger
 from src.utils import get_script_name
 from configs import LoggerConfig
