@@ -1,8 +1,10 @@
-import torch
-
+import logging
 from dataclasses import dataclass, asdict
 from pathlib import Path
-import logging
+from typing import Any
+from warnings import warn
+
+import torch
 
 
 def config_class(cls):
@@ -11,7 +13,8 @@ def config_class(cls):
     def to_dict(self) -> dict:
         return asdict(self)
 
-    setattr(cls, "to_dict", to_dict)
+    cls.to_dict = to_dict
+
     return cls
 
 
